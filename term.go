@@ -1,4 +1,4 @@
-package term
+package congo
 
 import (
 	"bufio"
@@ -71,6 +71,7 @@ func (t *Term) listen() {
 	t.done <- true
 }
 
+// ListenUntilExit starts reading command until "exit" or "quit"
 func (t *Term) ListenUntilExit() {
 	go t.listen()
 	<-t.done
