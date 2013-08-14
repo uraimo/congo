@@ -31,11 +31,6 @@ func (t *Term) RemoveCommand(name string) {
 	delete(t.cmds, name)
 }
 
-// Wait until Listen() ends
-func (t *Term) WaitUntilExit() {
-	<-t.done
-}
-
 // Prompt set the prompt
 func (t *Term) Prompt(prompt string) {
 	t._prompt=prompt
@@ -43,7 +38,7 @@ func (t *Term) Prompt(prompt string) {
 
 // Display the prompt and listen for new commands
 // Add them with .AddCommand(command name, function implementing it)
-func (t *Term) Listen() {
+func (t *Term) listen() {
 	scanner := bufio.NewScanner(os.Stdin)
 	running := true
 	fmt.Print(t._prompt + " ")
@@ -64,4 +59,9 @@ func (t *Term) Listen() {
 		}
 	}
 	t.done <- true
+}
+
+func (t *Term) ListenUntilExit() {
+	go t.listen()
+	<-t.done
 }
