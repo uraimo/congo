@@ -12,12 +12,13 @@ type Term struct {
 	cmds map[string]func([]string)
 	done chan bool
 	_prompt string
+	unknownHandler func(string)
 }
 
 
 // NewTerm creates a new initialized Term struct
 func NewTerm(prompt string) *Term {
-	t:= &Term{make(map[string]func([]string), 1), make(chan bool),prompt}
+	t:= &Term{make(map[string]func([]string), 1), make(chan bool),prompt,nil}
 	return t
 }
 
@@ -29,6 +30,11 @@ func (t *Term) AddCommand(name string, funct func([]string)) {
 // RemoveCommand removes a command/handler entry
 func (t *Term) RemoveCommand(name string) {
 	delete(t.cmds, name)
+}
+
+// AddUnknownHandler adds a function handler for unknown command
+func (t *Term) AddUnknownHandler(funct func(string)) {
+	t.unknownHandler = funct
 }
 
 // Prompt set the prompt
@@ -54,6 +60,10 @@ func (t *Term) listen() {
 				f(tokens[1:])
 			case found:
 				f([]string{})
+			default:
+				if t.unknownHandler!=nil && command!="" {
+					t.unknownHandler(command)
+				}
 			}
 			fmt.Print(t._prompt + " ")
 		}
