@@ -5,7 +5,7 @@ Congo is a dead simple console Go package that mimic net/http server API to prov
 Installation
 ------------
 
-	go install github.com/uraimo/congo
+	go get github.com/uraimo/congo
 
 Usage
 -----
