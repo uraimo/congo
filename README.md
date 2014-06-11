@@ -1,14 +1,14 @@
 # Congo
 
-Congo is a dead simple console Go package that mimic net/http server API to provide a simple way to add a console to your applications.
+[![GoDoc](https://godoc.org/github.com/uraimo/congo?status.png)](https://godoc.org/github.com/uraimo/congo)
 
-Installation
-------------
+Congo is a dead simple console Go package that mimic net/http server API to provide a simple way to add an interactive  console to your applications.
 
-	go get github.com/uraimo/congo
+##Installation
 
-Usage
------
+`go get github.com/uraimo/congo`
+
+##Usage
 
 ```go
 package main
