@@ -1,6 +1,6 @@
 # Congo
 
-[![GoDoc](https://godoc.org/github.com/uraimo/congo?status.png)](https://godoc.org/github.com/uraimo/congo) [![status](https://sourcegraph.com/api/repos/github.com/uraimo/congo/.badges/status.png)](https://sourcegraph.com/github.com/uraimo/congo)
+[![GoDoc](https://godoc.org/github.com/uraimo/congo?status.png)](https://godoc.org/github.com/uraimo/congo) [![GoReport A+](http://goreportcard.com/badge/uraimo/congo)](http://goreportcard.com/report/uraimo/congo)
 [![Build Status](https://travis-ci.org/uraimo/congo.svg)](https://travis-ci.org/uraimo/congo)
 
 Congo is a dead simple console Go package that mimic net/http server API to provide a simple way to add an interactive  console to your applications.
