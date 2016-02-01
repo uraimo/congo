@@ -9,16 +9,15 @@ import (
 
 // Term struct representing a console manager
 type Term struct {
-	cmds map[string]func([]string)
-	done chan bool
-	_prompt string
+	cmds           map[string]func([]string)
+	done           chan bool
+	_prompt        string
 	unknownHandler func(string)
 }
 
-
 // NewTerm creates a new initialized Term struct
 func NewTerm(prompt string) *Term {
-	t:= &Term{make(map[string]func([]string), 1), make(chan bool),prompt,nil}
+	t := &Term{make(map[string]func([]string), 1), make(chan bool), prompt, nil}
 	return t
 }
 
@@ -39,7 +38,7 @@ func (t *Term) AddUnknownHandler(funct func(string)) {
 
 // Prompt set the prompt
 func (t *Term) Prompt(prompt string) {
-	t._prompt=prompt
+	t._prompt = prompt
 }
 
 // Display the prompt and listen for new commands
@@ -61,7 +60,7 @@ func (t *Term) listen() {
 			case found:
 				f([]string{})
 			default:
-				if t.unknownHandler!=nil && command!="" {
+				if t.unknownHandler != nil && command != "" {
 					t.unknownHandler(command)
 				}
 			}
